@@ -107,37 +107,47 @@ vector<ll> getBin(ll a){
 void solve()
 {
     // Your solution code goes here
-    inll(maxT);
-    inll(maxN);
-    inll(sumN);
-    vl n;
-    if(sumN/maxN>maxT){
-        if (sumN % maxN != 0)
-        {
-            n.push_back((sumN % maxN));
-            maxT--;
+    inint(n);
+    inint(k);
+    vl arr(n);
+    for(auto&it:arr){
+        cin>>it;
+    }
+    vl motu;
+    vl tomu;
+    for(int i=0;i<n;i+=2){
+        motu.push_back(arr[i]);
+    }
+    for(int i=1;i<n;i+=2){
+        tomu.push_back(arr[i]);
+    }
+    sort(all(motu));
+    sort(all(tomu));
+    int i=0;
+    int m=motu.size();
+    int t=tomu.size();
+    int j=m-1;
+    while(k--&&i<t&&j>=0){
+        if(motu[j]>tomu[i]){
+            swap(motu[j],tomu[i]);
+            j--;
+            i++;
         }
-        
-        while (maxT--)
-        {
-            n.push_back(maxN);
+        else{
+            break;
         }
     }
-    else{
-        if (sumN % maxN != 0)
-        {
-            n.push_back((sumN % maxN));
-        }
-        int k= sumN/maxN;
-        while(k--){
-            n.push_back(maxN);
-        }
+    int scoreM=0;
+    int scoreT=0;
+    for(int i=0;i<m;i++){
+        scoreM+=motu[i];
     }
-    ll ans=0;
-    for(int i=0;i<n.size();i++){
-        ans+=n[i]*n[i];
+    for(int i=0;i<t;i++){
+        scoreT+=tomu[i];
     }
-    out(ans);
+    if(scoreT>scoreM) py;
+    else pn;
+
 }
 
 int32_t main()

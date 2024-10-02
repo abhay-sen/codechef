@@ -104,40 +104,14 @@ vector<ll> getBin(ll a){
     for(ll i=0;i<64;i++) ans[i]=((a>>i)&1LL);
     return ans;
 }
+
 void solve()
 {
     // Your solution code goes here
-    inll(maxT);
-    inll(maxN);
-    inll(sumN);
-    vl n;
-    if(sumN/maxN>maxT){
-        if (sumN % maxN != 0)
-        {
-            n.push_back((sumN % maxN));
-            maxT--;
-        }
-        
-        while (maxT--)
-        {
-            n.push_back(maxN);
-        }
-    }
-    else{
-        if (sumN % maxN != 0)
-        {
-            n.push_back((sumN % maxN));
-        }
-        int k= sumN/maxN;
-        while(k--){
-            n.push_back(maxN);
-        }
-    }
-    ll ans=0;
-    for(int i=0;i<n.size();i++){
-        ans+=n[i]*n[i];
-    }
-    out(ans);
+    inint(n);
+    ll val = (powermod(2,n,M)-1)%M;
+    cout<<(val/2)%M+1<<endl;
+
 }
 
 int32_t main()

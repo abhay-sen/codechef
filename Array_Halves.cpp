@@ -107,37 +107,32 @@ vector<ll> getBin(ll a){
 void solve()
 {
     // Your solution code goes here
-    inll(maxT);
-    inll(maxN);
-    inll(sumN);
-    vl n;
-    if(sumN/maxN>maxT){
-        if (sumN % maxN != 0)
-        {
-            n.push_back((sumN % maxN));
-            maxT--;
-        }
-        
-        while (maxT--)
-        {
-            n.push_back(maxN);
-        }
+    inll(n);  // Input the size of the array
+vl arr(n);  // Define a vector of size n
+for(auto& it : arr){
+    cin >> it;  // Input each element of the array
+}
+
+int count = 0;  // Initialize a counter for the number of swaps
+int index = 0;  // Start with index 0
+
+while(index < n){
+    // If the element is already in the correct position
+    if(arr[index] == index + 1){
+        index++;
     }
-    else{
-        if (sumN % maxN != 0)
-        {
-            n.push_back((sumN % maxN));
-        }
-        int k= sumN/maxN;
-        while(k--){
-            n.push_back(maxN);
-        }
+    // Ensure arr[index] is within bounds and avoid unnecessary swaps
+    else if (arr[index] > 0 && arr[index] <= n && arr[index] != arr[arr[index] - 1]){
+        swap(arr[index], arr[arr[index] - 1]);  // Swap the current element to its correct position
+        count++;  // Increment the swap counter
     }
-    ll ans=0;
-    for(int i=0;i<n.size();i++){
-        ans+=n[i]*n[i];
+    else {
+        index++;  // Move to the next element
     }
-    out(ans);
+}
+
+out(count);  // Output the number of swaps
+
 }
 
 int32_t main()

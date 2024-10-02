@@ -107,37 +107,52 @@ vector<ll> getBin(ll a){
 void solve()
 {
     // Your solution code goes here
-    inll(maxT);
-    inll(maxN);
-    inll(sumN);
-    vl n;
-    if(sumN/maxN>maxT){
-        if (sumN % maxN != 0)
-        {
-            n.push_back((sumN % maxN));
-            maxT--;
-        }
-        
-        while (maxT--)
-        {
-            n.push_back(maxN);
+    inint(n);
+    inint(m);
+    vector<string> flag(n);
+    vector<string> output(n);
+    for(int i=0;i<n;i++){
+        string a,b;
+        cin>>a>>b;
+        flag[i]=a;
+        output[i]=b;
+    }
+    //correct checks;
+    for(int i=0;i<n;i++){
+        if(flag[i]=="correct"){
+            int count=0;
+            for(int j=0;j<m;j++){
+                if(output[i][j]=='1'){
+                    count++;
+                }
+            }
+            if(count!=m) {
+                out("INVALID");
+                return;
+            }
         }
     }
-    else{
-        if (sumN % maxN != 0)
+    //incorrect checks
+    for (int i = 0; i < n; i++)
+    {
+        if (flag[i] == "wrong")
         {
-            n.push_back((sumN % maxN));
-        }
-        int k= sumN/maxN;
-        while(k--){
-            n.push_back(maxN);
+            int count = 0;
+            for (int j = 0; j < m; j++)
+            {
+                if (output[i][j] == '1')
+                {
+                    count++;
+                }
+            }
+            if (count == m)
+            {
+                out("WEAK");
+                return;
+            }
         }
     }
-    ll ans=0;
-    for(int i=0;i<n.size();i++){
-        ans+=n[i]*n[i];
-    }
-    out(ans);
+    out("FINE");
 }
 
 int32_t main()

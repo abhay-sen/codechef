@@ -107,37 +107,17 @@ vector<ll> getBin(ll a){
 void solve()
 {
     // Your solution code goes here
-    inll(maxT);
-    inll(maxN);
-    inll(sumN);
-    vl n;
-    if(sumN/maxN>maxT){
-        if (sumN % maxN != 0)
-        {
-            n.push_back((sumN % maxN));
-            maxT--;
-        }
-        
-        while (maxT--)
-        {
-            n.push_back(maxN);
-        }
+    inll(n);
+    vl arr(n);
+    for(auto &it:arr){
+        cin>>it;
     }
-    else{
-        if (sumN % maxN != 0)
-        {
-            n.push_back((sumN % maxN));
-        }
-        int k= sumN/maxN;
-        while(k--){
-            n.push_back(maxN);
-        }
-    }
+    sort(arr.begin(),arr.end());
     ll ans=0;
-    for(int i=0;i<n.size();i++){
-        ans+=n[i]*n[i];
+    for(int i=n-1;i>=0;i-=2){
+        ans+=arr[i];
     }
-    out(ans);
+    cout<<ans<<endl;
 }
 
 int32_t main()

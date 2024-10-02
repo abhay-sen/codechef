@@ -104,40 +104,42 @@ vector<ll> getBin(ll a){
     for(ll i=0;i<64;i++) ans[i]=((a>>i)&1LL);
     return ans;
 }
+vector<int> Numbers(string str){
+    vector<int> result(26);
+    for(int i=0;i<str.size();i++){
+        result[str[i]-'a']++;
+        }
+        return result;
+}
 void solve()
 {
     // Your solution code goes here
-    inll(maxT);
-    inll(maxN);
-    inll(sumN);
-    vl n;
-    if(sumN/maxN>maxT){
-        if (sumN % maxN != 0)
-        {
-            n.push_back((sumN % maxN));
-            maxT--;
-        }
+    string ParentA;
+    cin>>ParentA;
+    string ParentB;cin>>ParentB;
+    string x=ParentA+ParentB;
+    int n;cin>>n;
+    vector<string> v(n);
+    for(auto& it:v){
+        cin>>it;
+    }
+    string c="";
+    for(auto&it:v){
+        c+=it;
         
-        while (maxT--)
-        {
-            n.push_back(maxN);
+    }
+    vector<int> NumberInX=Numbers(x);
+    vector<int> NumberInC=Numbers(c);
+    bool flag=true;
+    for(int i=0;i<26;i++){
+        if(NumberInC>NumberInX){
+            flag=false;
+            break;
         }
     }
-    else{
-        if (sumN % maxN != 0)
-        {
-            n.push_back((sumN % maxN));
-        }
-        int k= sumN/maxN;
-        while(k--){
-            n.push_back(maxN);
-        }
-    }
-    ll ans=0;
-    for(int i=0;i<n.size();i++){
-        ans+=n[i]*n[i];
-    }
-    out(ans);
+    if(flag) py;
+    else pn;
+
 }
 
 int32_t main()
