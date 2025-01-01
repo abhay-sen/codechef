@@ -1,4 +1,4 @@
-#include <bits/stdc++.h> 
+#include <bits/stdc++.h>
 using namespace std;
 
 //Speed
@@ -107,29 +107,14 @@ vector<ll> getBin(ll a){
 void solve()
 {
     // Your solution code goes here
-    inll(n);
-    ll size = 2 * n;
-    vl arr(size);
-    for (ll i = 0; i < size; i++)
-    {
-        inll(x);
-        arr[i] = x;
-    }
-    int index = 0;
-    int count = 0;
-    while (index < size)
-    {
-        if (arr[index] != index + 1)
-        {
-            count++;
-            swap(arr[index], arr[arr[index] - 1]);
-        }
-        else
-        {
-            index++;
-        }
-    }
-    out(count);
+    inll(D);
+    inll(d);
+    inll(P);
+    inll(Q);
+    ll n=D/d;
+    ll x=D%d;
+    ll total=P*(n*d+x)+Q*((((n-1)*n)/2)*d+x*n);
+    out(total);
 }
 
 int32_t main()

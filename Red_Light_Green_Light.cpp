@@ -1,4 +1,4 @@
-#include <bits/stdc++.h> 
+#include <bits/stdc++.h>
 using namespace std;
 
 //Speed
@@ -108,28 +108,17 @@ void solve()
 {
     // Your solution code goes here
     inll(n);
-    ll size = 2 * n;
-    vl arr(size);
-    for (ll i = 0; i < size; i++)
-    {
-        inll(x);
-        arr[i] = x;
+    inll(k);
+    vl arr(n);
+    for(auto &it:arr){
+        cin>>it;
     }
-    int index = 0;
-    int count = 0;
-    while (index < size)
-    {
-        if (arr[index] != index + 1)
-        {
-            count++;
-            swap(arr[index], arr[arr[index] - 1]);
-        }
-        else
-        {
-            index++;
-        }
+    int count=0;
+    for(auto& it:arr){
+        if(it>k) count++;
     }
     out(count);
+    
 }
 
 int32_t main()

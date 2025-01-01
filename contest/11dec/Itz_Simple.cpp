@@ -1,4 +1,4 @@
-#include <bits/stdc++.h> 
+#include <bits/stdc++.h>
 using namespace std;
 
 //Speed
@@ -108,28 +108,26 @@ void solve()
 {
     // Your solution code goes here
     inll(n);
-    ll size = 2 * n;
-    vl arr(size);
-    for (ll i = 0; i < size; i++)
-    {
-        inll(x);
-        arr[i] = x;
+    inll(k);
+    inll(p);
+    vl arr(n);
+    for(auto& it:arr){
+        cin>>it;
     }
-    int index = 0;
-    int count = 0;
-    while (index < size)
-    {
-        if (arr[index] != index + 1)
-        {
-            count++;
-            swap(arr[index], arr[arr[index] - 1]);
-        }
-        else
-        {
-            index++;
-        }
+    ll sum=0;
+    ll maxi=INT_MIN;
+    for(auto&it:arr){
+        maxi=max(maxi,it);
+        sum+=it;
     }
-    out(count);
+    sum-=maxi;
+    ll ved=k+maxi;
+    ll varun=p+sum;
+    if(ved>varun) out("Ved")
+    else if(ved<varun) out("Varun")
+    else{
+        out("Equal")
+    }
 }
 
 int32_t main()

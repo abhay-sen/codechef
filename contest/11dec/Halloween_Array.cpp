@@ -1,4 +1,4 @@
-#include <bits/stdc++.h> 
+#include <bits/stdc++.h>
 using namespace std;
 
 //Speed
@@ -108,28 +108,42 @@ void solve()
 {
     // Your solution code goes here
     inll(n);
-    ll size = 2 * n;
-    vl arr(size);
-    for (ll i = 0; i < size; i++)
-    {
-        inll(x);
-        arr[i] = x;
+    inll(l);
+    inll(r);
+    vl arr(n);
+    for(auto& it:arr){
+        cin>>it;
     }
-    int index = 0;
-    int count = 0;
-    while (index < size)
-    {
-        if (arr[index] != index + 1)
-        {
-            count++;
-            swap(arr[index], arr[arr[index] - 1]);
-        }
-        else
-        {
-            index++;
+    sort(arr.begin(),arr.end());
+    ll xors=0;
+    bool flag=false;
+    for(int i=0;i<n-1;i++){
+        if(arr[i]==arr[i+1]){
+            flag=true;
         }
     }
-    out(count);
+    if(flag){
+        xors=0;
+    }
+    else{
+        xors=1;
+        for(int i=0;i<n-1;i++){
+            for(int j=i+1;j<n;j++){
+                ll curr=arr[i]^arr[j];
+                xors*=curr;
+                if(xors>r){
+                    xors=r+1;
+                    break;
+                }
+            }
+        }
+    }
+    if(xors>=l&&xors<=r){
+        py;
+    }
+    else{
+        pn;
+    }
 }
 
 int32_t main()

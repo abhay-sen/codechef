@@ -1,4 +1,4 @@
-#include <bits/stdc++.h> 
+#include <bits/stdc++.h>
 using namespace std;
 
 //Speed
@@ -108,28 +108,23 @@ void solve()
 {
     // Your solution code goes here
     inll(n);
-    ll size = 2 * n;
-    vl arr(size);
-    for (ll i = 0; i < size; i++)
-    {
+    ll sum=0;
+    rep(i,n){
         inll(x);
-        arr[i] = x;
+        sum+=x;
     }
-    int index = 0;
-    int count = 0;
-    while (index < size)
-    {
-        if (arr[index] != index + 1)
-        {
-            count++;
-            swap(arr[index], arr[arr[index] - 1]);
+    ll pass=((n+1)*100)/2;
+    if(sum>=pass){
+        out(0);
+    }
+    else{
+        if(pass-sum>100){
+            out(-1);
         }
-        else
-        {
-            index++;
+        else{
+            out(pass-sum);
         }
     }
-    out(count);
 }
 
 int32_t main()
