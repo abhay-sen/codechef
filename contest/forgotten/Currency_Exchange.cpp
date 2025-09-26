@@ -116,6 +116,76 @@ void solve()
     inll(givenSilver);
     inll(requiredGold);
     inll(requiredSilver);
+    if(givenGold==requiredGold && givenSilver==requiredSilver)
+    {
+        py;
+        return;
+    }
+    if(givenGold<requiredGold){
+        ll goldNeeded=requiredGold-givenGold;
+        ll silverNeeded=goldNeeded* 5;
+        if(givenSilver<silverNeeded){
+            pn;
+            return;
+        }else{
+            givenGold+=goldNeeded;
+            givenSilver-=silverNeeded;
+        }
+        if(givenSilver<requiredSilver){
+            pn;
+            return;
+        }else if(givenSilver==requiredSilver){
+            py;
+            return;
+        }else{
+            ll extraSilver=givenSilver-requiredSilver;
+            if(extraSilver/5==extraSilver%5){
+                py;
+                return;
+            }
+            else{
+                pn;
+                return;
+            }
+        }
+    }else if(givenGold==requiredGold){
+        if(givenSilver<requiredSilver){
+            pn;
+            return;
+        }else{
+            ll extraSilver = givenSilver - requiredSilver;
+            if (extraSilver / 5 == extraSilver % 5)
+            {
+                py;
+                return;
+            }
+            else
+            {
+                pn;
+                return;
+            }
+        }
+    }else{
+        ll extraGold=givenGold-requiredGold;
+        givenSilver+=extraGold*5;
+        if(givenSilver<requiredSilver){
+            pn;
+            return;
+        }else if(givenSilver==requiredSilver){
+            py;
+            return;
+        }else{
+            ll extraSilver=givenSilver-requiredSilver;
+            if(extraSilver/5==extraSilver%5){
+                py;
+                return;
+            }else{
+                pn;
+                return;
+            }
+        }
+        
+    }
 }
 
 int32_t main()
